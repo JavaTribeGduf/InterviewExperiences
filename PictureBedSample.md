@@ -6,7 +6,7 @@ Info
 鉴于Github不方便托管图片文件，考虑到以后使用插入图片的场景很常见，故搭建一个图床以供使用
 
 
-图床地址在[这里](https://img.delitto.club)，[备用地址1](https://img2.delitto.club)
+图床地址在[这里](https://img.delitto.club)，[备用地址1](https://img2.delitto.club)，[备用地址2](https://img3.delitto.club)
 
 
 Usage
@@ -41,3 +41,5 @@ Others
 ![881470071.png](https://img.delitto.club/images/2018/04/12/881470071.png)
 
 - 目前图床用的是我的个人域名的子域，后期会尝试迁移至部落所属域名下
+
+- 目前是多域名多IP映射，有时间会考虑单域名多IP的负载均衡
