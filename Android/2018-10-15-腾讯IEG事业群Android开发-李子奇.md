@@ -1,0 +1,44 @@
+> * 面试部门：腾讯IEG事业群-Android开发
+> * 面试者：李子奇
+> * 面试时间：2018-10-15、2018-10-17
+> * 面试地点：深圳南山区科兴科学园
+> * 面试时长：40分钟 + 50分钟
+> * 写作时间：2018-11-24
+
+有些问题已经记不起来了。除了腾讯以外，深圳很多公司都喜欢问数组和链表的区别，或者是ArrayList与LinkedList的区别。对于Android开发者来说，Android的源码是必须去看的。个人建议先Framework层入手，看Handler和Binder的实现原理，这两个是Android系统通信的核心机制，也是面试官喜欢问的两个部分。然后去看View的绘制和事件分发。（目前在整理相关的问题回答，往后补上，或者通过邮箱联系我：lzq.leeleg@qq.com）
+### 1. 自我介绍
+姓名、学校和专业走一波，稍微提一下科班出身（有些应聘者是跨专业的，科班应该有优势），什么时候开始接触Android，至今接触过哪些技术（后端、前端、Python和Docker也走一波），在扯这些技术时起码保证自己会点核心的东西；然后说最近的学习状态和将来的安排。
+### 2. TCP与UDP的区别，UDP如何模拟TCP
+### 3. 如何避免死锁
+### 4. 多线程需要注意什么问题
+### 5. Android四大组件各自的作用
+### 6. Android系统架构
+从上至下
+
+Application：应用层，开发APP运行在这一层
+
+Framework：Activity、Handler以及Binder等我们常调用的JavaAPI实现层
+
+C/C++和Android RunTime：常用的C/C++库（OpenGL、Webkit等）、Handler和Binder的C/C++实现和Android虚拟机（ART）
+
+HAL：硬件接口层，手机厂商争对自家硬件的接口实现
+
+Kernel：Linux内核层
+### 7. 数组和链表的区别，分别适用什么场景
+### 8. 最近在看什么书
+### 9. 在一个团队里，项目中遇到问题时，你是怎么解决的
+### 10. 是否做过网络编程方面的工作
+### 11. 同事与你的方案各有优劣时，你会怎么做
+### 12. 如何避免内存泄漏
+### 13. UI界面如何优化
+### 14. Handler机制
+介绍四大角色以及作用
+- Handler: Message的发送者和处理者
+- Message: 消息的包裹者
+- MessageQueue: 消息队列，存放Handler发送过来的Message
+- Looper: 内部有死循环，不断地从MessageQueue中拿取Message，并分发给对应的Handler处理
+
+补充一个重要的类：ThreadLocal，用于存放Looper。每个线程只能有一个Looper，开启新线程时需手动启动Looper；主线程（UI线程）默认开启Looper。（看源码的重要性）
+
+此处有个坑，即Looper内部的死循环，一般面试官会问这个死循环占用系统资源的问题。Looper在C/C++层的实现用到了管道技术。简单来说，当没有Message过来时，Looper处于休眠状态；有Message过来时，会唤醒Looper执行分发的任务。
+### 15. Binder机制
