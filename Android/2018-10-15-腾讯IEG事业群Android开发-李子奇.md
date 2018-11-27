@@ -15,40 +15,40 @@
 ### 6. Android系统架构
 从上至下
 
-Application：应用层，开发APP运行在这一层
+**Application：**应用层，开发APP运行在这一层
 
-Framework：Activity、Handler以及Binder等我们常调用的JavaAPI实现层
+**Framework：**Activity、Handler以及Binder等我们常调用的JavaAPI实现层
 
-C/C++和Android RunTime：常用的C/C++库（OpenGL、Webkit等）、Handler和Binder的C/C++实现和Android虚拟机（ART）
+**C/C++和Android RunTime：**常用的C/C++库（OpenGL、Webkit等）、Handler和Binder的C/C++实现和Android虚拟机（ART）
 
-HAL：硬件接口层，手机厂商争对自家硬件的接口实现
+**HAL：**硬件接口层，手机厂商争对自家硬件的接口实现
 
-Kernel：Linux内核层
+**Kernel：**Linux内核层
 ### 7. 数组和链表的区别，分别适用什么场景
 从增、删、改、查入手分析
 
-数组：随机改、查效率高，因为使用下标的时间复杂度是O(1)；随机增、删效率低，在保持数组的连续性的前提下，需要对后面的元素进行一次复制；
+**数组：**随机改、查效率高，因为使用下标的时间复杂度是O(1)；随机增、删效率低，在保持数组的连续性的前提下，需要对后面的元素进行一次复制；
 
-链表：随机改、查效率低，需要从头节点（尾节点）进行遍历；随机增、删效率高，因为只需要修改节点的指向即可，在找出插入（删除）的节点位置时需要查找，而主要的花销也就在查找上；
+**链表：**随机改、查效率低，需要从头节点（尾节点）进行遍历；随机增、删效率高，因为只需要修改节点的指向即可，在找出插入（删除）的节点位置时需要查找，而主要的花销也就在查找上；
 ### 8. 最近在看什么书
 ### 9. 在一个团队里，项目中遇到问题时，你是怎么解决的
 ### 10. 是否做过网络编程方面的工作
 ### 11. 同事与你的方案各有优劣时，你会怎么做
 ### 12. 如何避免内存泄漏
 ### 13. UI界面如何优化
-布局层级：避免过多的布局嵌套，尽可能地扁平化。布局层级越复杂，UI加载的速度就越慢。可根据实际情况调整布局；使用<include />标签复用重复布局；使用<merge />标签重用布局的根视图；
+- **布局层级：**避免过多的布局嵌套，尽可能地扁平化。布局层级越复杂，UI加载的速度就越慢。可根据实际情况调整布局；使用<include />标签复用重复布局；使用<merge />标签重用布局的根视图；
 
-ViewStub：实现View的按需加载，未加载的View不占用内存（与gone、invisible属性的区别）；
+- **ViewStub：**实现View的按需加载，未加载的View不占用内存（与gone、invisible属性的区别）；
 
-自定义View的绘制：避免过度绘制；在重写的onDraw方法及其所调用的方法中，避免进行任何的对象分配
+- **自定义View的绘制：**避免过度绘制；在重写的onDraw方法及其所调用的方法中，避免进行任何的对象分配
 ### 14. Handler机制
 介绍四大角色以及作用
-- Handler: Message的发送者和处理者
-- Message: 消息的包裹者
-- MessageQueue: 消息队列，存放Handler发送过来的Message
-- Looper: 内部有死循环，不断地从MessageQueue中拿取Message，并分发给对应的Handler处理
+- **Handler：**Message的发送者和处理者
+- **Message：**消息的包裹者
+- **MessageQueue：**消息队列，存放Handler发送过来的Message
+- **Looper：**内部有死循环，不断地从MessageQueue中拿取Message，并分发给对应的Handler处理
 
-补充一个重要的类：ThreadLocal，用于存放Looper。每个线程只能有一个Looper，开启新线程时需手动启动Looper；主线程（UI线程）默认开启Looper。（看源码的重要性）
+补充一个重要的类：**ThreadLocal**，用于存放Looper。每个线程只能有一个Looper，开启新线程时需手动启动Looper；主线程（UI线程）默认开启Looper。（看源码的重要性）
 
 此处有个坑，即Looper内部的死循环，一般面试官会问这个死循环占用系统资源的问题。Looper在C/C++层的实现用到了管道技术。简单来说，当没有Message过来时，Looper处于休眠状态；有Message过来时，会唤醒Looper执行分发的任务。
 ### 15. Binder机制
